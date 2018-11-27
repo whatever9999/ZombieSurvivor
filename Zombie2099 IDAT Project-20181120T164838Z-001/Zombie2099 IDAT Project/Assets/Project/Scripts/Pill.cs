@@ -8,7 +8,26 @@ public class Pill : MonoBehaviour
     public GameObject pill;
     public bool hadPill = false;
 
+    bool takePill = false;
+
     bool onTrigger;
+
+    private void Update()
+    {
+        if(takePill)
+        {
+            onTrigger = false;
+            hadPill = true;
+            pill.SetActive(false);
+            float currentVirus = FindObjectOfType<PlayerHealth>().CurrentVirus;
+            currentVirus -= 20;
+            if (currentVirus < 0)
+            {
+                currentVirus = 0;
+            }
+            FindObjectOfType<PlayerHealth>().CurrentVirus = currentVirus;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,15 +51,7 @@ public class Pill : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    onTrigger = false;
-                    hadPill = true;
-                    pill.SetActive(false);
-                    float currentVirus = FindObjectOfType<PlayerHealth>().CurrentVirus;
-                    currentVirus -= 20;
-                    if (currentVirus < 0) {
-                        currentVirus = 0;
-                    }
-                    FindObjectOfType<PlayerHealth>().CurrentVirus = currentVirus;
+                    takePill = true;
                 }
             }
         }
