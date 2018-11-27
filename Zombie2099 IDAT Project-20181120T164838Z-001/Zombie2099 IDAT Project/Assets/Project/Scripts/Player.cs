@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public event System.Action OnReachedEndOfLevel;
 
     public float speed = 10.0f;
-    public float proximity = 0f;
     private float translation;
     private float straffe;
     bool disabled;
@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
         {
             // turn on the cursor
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
     }
 

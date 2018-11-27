@@ -51,6 +51,11 @@ public class GameUI : MonoBehaviour {
     void OnGameOver(GameObject gameOverUI)
     {
         FindObjectOfType<Heart>().keepPlaying = false;
+        Keypad[] keypads = FindObjectsOfType<Keypad>();
+        for(int i = 0; i < keypads.Length; i++)
+        {
+            keypads[i].keypadScreen = false;
+        }
         HUD.SetActive(false);
         gameOverUI.SetActive(true);
         gameIsOver = true;

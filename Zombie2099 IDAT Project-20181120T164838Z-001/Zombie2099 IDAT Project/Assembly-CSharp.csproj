@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\LevelItems\Keypad\Script\Playsound.cs" />
-    <Compile Include="Assets\Project\Scripts\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Project\Scripts\Flashlight.cs" />
     <Compile Include="Assets\Project\Scripts\GameUI.cs" />
     <Compile Include="Assets\Project\Scripts\Guard.cs" />
