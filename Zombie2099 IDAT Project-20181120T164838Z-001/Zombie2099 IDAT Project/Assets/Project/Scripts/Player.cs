@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public event System.Action OnReachedEndOfLevel;
 
     public float speed = 10.0f;
+    public float proximity = 0f;
     private float translation;
     private float straffe;
     bool disabled;

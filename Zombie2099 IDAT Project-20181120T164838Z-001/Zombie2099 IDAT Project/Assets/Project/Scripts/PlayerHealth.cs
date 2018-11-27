@@ -22,7 +22,8 @@ public class PlayerHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        CurrentVirus += 1 * (Time.deltaTime / 1);
+        float heartRate = FindObjectOfType<Heart>().secondsBetweenBeats;
+        CurrentVirus += (1 * (Time.deltaTime / heartRate)) / 2;
         virusBar.value = CurrentVirus;
         if (CurrentVirus >= 100)
         {

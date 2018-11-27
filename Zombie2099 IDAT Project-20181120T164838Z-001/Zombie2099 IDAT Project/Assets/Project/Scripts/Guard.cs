@@ -6,14 +6,15 @@ public class Guard : MonoBehaviour {
 
     public static event System.Action OnGuardHasSpottedPlayer;
 
-    public float speed = 5;
-    public float waitTime = .3f;
-    public float turnSpeed = 90;
+    public float speed;
+    public float turnSpeed = 110;
     public float timeToSpotPlayer = 0.5f;
 
     public Light spotLight;
     public float viewDistance;
+    public float presenceRange;
     public LayerMask viewMask;
+    public bool isClose;
 
     float viewAngle;
     float playerVisibleTimer;
@@ -37,20 +38,30 @@ public class Guard : MonoBehaviour {
         StartCoroutine(FollowPath(waypoints));
     }
 
-    private void Update() {
-        if (CanSeePlayer()) {
+    private void Update()
+    {
+        if (CanSeePlayer())
+        {
             playerVisibleTimer += Time.deltaTime;
-        } else {
+            FindObjectOfType<Heart>().secondsBetweenBeats -= Time.deltaTime;
+        }
+        else
+        {
             playerVisibleTimer -= Time.deltaTime;
+            FindObjectOfType<Heart>().secondsBetweenBeats += Time.deltaTime;
         }
         playerVisibleTimer = Mathf.Clamp(playerVisibleTimer, 0, timeToSpotPlayer);
         spotLight.color = Color.Lerp(originalSpotlightColour, Color.red, playerVisibleTimer / timeToSpotPlayer);
 
-        if(playerVisibleTimer >= timeToSpotPlayer) { 
-            if(OnGuardHasSpottedPlayer != null) {
+        if (playerVisibleTimer >= timeToSpotPlayer)
+        {
+            if (OnGuardHasSpottedPlayer != null)
+            {
                 OnGuardHasSpottedPlayer();
             }
         }
+
+        StartCoroutine(CheckIfClose());
     }
 
     bool CanSeePlayer() {
@@ -65,6 +76,30 @@ public class Guard : MonoBehaviour {
             }
         }
         return false;
+    }
+
+    bool CloseToPlayer()
+    {
+        if (Vector3.Distance(transform.position, player.position) < presenceRange)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    IEnumerator CheckIfClose()
+    {
+        if (CloseToPlayer())
+        {
+            FindObjectOfType<Heart>().secondsBetweenBeats -= Time.deltaTime * 5.2f;
+            if (FindObjectOfType<Heart>().secondsBetweenBeats < 0.5f) FindObjectOfType<Heart>().secondsBetweenBeats = 0.5f;
+            isClose = true;
+        }
+        else
+        {
+            isClose = false;
+        }
+        yield return new WaitForSeconds(5);
     }
 
     IEnumerator FollowPath(Vector3[] waypoints) {
@@ -82,10 +117,9 @@ public class Guard : MonoBehaviour {
                 targetWaypointIndex = (targetWaypointIndex + 1) % waypoints.Length;
                 targetWaypoint = waypoints[targetWaypointIndex];
 
-                yield return new WaitForSeconds(waitTime);
                 yield return StartCoroutine(TurnToFace(targetWaypoint));
             }
-            yield return null;
+                yield return null;
         }
     }
 

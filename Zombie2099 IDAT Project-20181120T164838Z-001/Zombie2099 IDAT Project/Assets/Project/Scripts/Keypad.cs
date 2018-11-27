@@ -69,7 +69,9 @@ public class Keypad : MonoBehaviour {
                 GUI.Box(new Rect((Screen.width - rectW) / 2, (Screen.height - rectH) / 2, rectW, rectH), "");
                 GUI.Box(new Rect((Screen.width - inputW) / 2, (Screen.height - inputH - rectH / 2) / 2 - 45, inputW, inputH), input);
 
-                //Frst Row
+                GUI.Box(new Rect((Screen.width - inputW) / 2, Screen.height - inputH, inputW, inputW), "Press space to clear input");
+
+                //First Row
                 int buttonW = 100;
                 int buttonH = 100;
                 if (GUI.Button(new Rect((Screen.width - buttonW - rectW / 2) / 2 - 5, (Screen.height - buttonH - rectH / 2) / 2 + 25, 100, 100), "1"))
@@ -117,6 +119,11 @@ public class Keypad : MonoBehaviour {
                 if (GUI.Button(new Rect((Screen.width - buttonW - rectW / 2) / 2 + 100, (Screen.height - buttonH - rectH / 2) / 2 + 340, 100, 100), "0"))
                 {
                     input = input + "0";
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    input = "";
                 }
             }
         }

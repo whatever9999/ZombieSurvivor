@@ -70,22 +70,23 @@
     <Compile Include="Assets\Project\Scripts\Keypad.cs" />
     <Compile Include="Assets\Project\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Project\Scripts\MouseCamLook.cs" />
+    <Compile Include="Assets\Project\Scripts\Note.cs" />
+    <Compile Include="Assets\Project\Scripts\Pill.cs" />
     <Compile Include="Assets\Project\Scripts\Player.cs" />
     <Compile Include="Assets\Project\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Project\Scripts\Settings.cs" />
     <Compile Include="Assets\Project\Scripts\Sound.cs" />
-    <None Include="Assets\BodyGuards\ReadMe.txt.txt" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>D:/Zombie2099 IDAT Project-20181120T164838Z-001/Zombie2099 IDAT Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/Projects/ZombieSurvivor/Zombie2099 IDAT Project-20181120T164838Z-001/Zombie2099 IDAT Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Zombie2099 IDAT Project-20181120T164838Z-001/Zombie2099 IDAT Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Projects/ZombieSurvivor/Zombie2099 IDAT Project-20181120T164838Z-001/Zombie2099 IDAT Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/Zombie2099 IDAT Project-20181120T164838Z-001/Zombie2099 IDAT Project/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/Projects/ZombieSurvivor/Zombie2099 IDAT Project-20181120T164838Z-001/Zombie2099 IDAT Project/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Zombie2099 IDAT Project-20181120T164838Z-001/Zombie2099 IDAT Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Projects/ZombieSurvivor/Zombie2099 IDAT Project-20181120T164838Z-001/Zombie2099 IDAT Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

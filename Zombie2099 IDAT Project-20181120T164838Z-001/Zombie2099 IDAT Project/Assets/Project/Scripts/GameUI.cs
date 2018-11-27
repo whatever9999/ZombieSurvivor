@@ -50,6 +50,7 @@ public class GameUI : MonoBehaviour {
 
     void OnGameOver(GameObject gameOverUI)
     {
+        FindObjectOfType<Heart>().keepPlaying = false;
         HUD.SetActive(false);
         gameOverUI.SetActive(true);
         gameIsOver = true;

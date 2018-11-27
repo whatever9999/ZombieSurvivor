@@ -11,13 +11,32 @@ public class Heart : MonoBehaviour {
     AudioSource heartbeat;
 
     public float secondsBetweenBeats;
-    bool keepPlaying = true;
+    public bool keepPlaying = true;
     bool justBeat = false;
 
     private void Start()
     {
         heartbeat = this.GetComponent<AudioSource>();
         StartCoroutine(Beat());
+    }
+
+    private void Update()
+    {
+        int numOfCloseGuards = 0;
+        Guard[] guards = FindObjectsOfType<Guard>();
+
+        for (int i = 0; i < guards.Length; i++)
+        {
+            if (guards[i].isClose)
+            {
+                numOfCloseGuards += 1;
+            }
+        }
+        if (numOfCloseGuards == 0)
+        {
+            FindObjectOfType<Heart>().secondsBetweenBeats += Time.deltaTime;
+            if (FindObjectOfType<Heart>().secondsBetweenBeats > 1f) FindObjectOfType<Heart>().secondsBetweenBeats = 1f;
+        }
     }
 
     IEnumerator Beat()
@@ -30,7 +49,7 @@ public class Heart : MonoBehaviour {
                 BigHeart.SetActive(true);
                 heartbeat.Play();
                 justBeat = true;
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(secondsBetweenBeats / 5);
             }
             else
             {
